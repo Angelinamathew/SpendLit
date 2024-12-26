@@ -1,5 +1,7 @@
 package com.ExpenseTracker.SpendLit.service;
 
+import com.ExpenseTracker.SpendLit.dto.ExpenseDto;
+import com.ExpenseTracker.SpendLit.entity.Expense;
 import com.ExpenseTracker.SpendLit.repository.ExpenseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,8 +9,39 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ExpenseServiceImplementation implements ExpenseService{
-    //test2
-    //3
-    //4
+
+    private final ExpenseRepository expenseRepository;
+
+
+    /**
+     * Updates or saves an Expense entity using the data from an ExpenseDto.
+     * If the provided Expense is new, this method acts as a creation process.
+     * Otherwise, it updates the existing Expense with new data.
+     *
+     * @param expense The existing or new Expense entity
+     * @param expenseDto The DTO containing updated data
+     * @return The saved Expense entity
+     */
+
+    public Expense updateOrSaveExpense(Expense expense, ExpenseDto expenseDto){
+        // Map fields from ExpenseDto to Expense entity
+        expense.setTitle(expenseDto.getTitle());
+        expense.setDate(expenseDto.getDate());
+        expense.setAmount(expenseDto.getAmount());
+        expense.setCategory(expenseDto.getCategory());
+        expense.setDescription(expenseDto.getDescription());
+
+        // Save the Expense entity to the database and return the saved entity
+        return expenseRepository.save(expense);
+    }
+    /**
+     * Creates a new Expense entity and persists it to the database.
+     *
+     * @param expenseDto The DTO containing the data for the new Expense
+     * @return The saved Expense entity
+     */
+    public Expense postExpense(ExpenseDto expenseDto){
+        return updateOrSaveExpense(new Expense(), expenseDto);
+    }
 
 }
