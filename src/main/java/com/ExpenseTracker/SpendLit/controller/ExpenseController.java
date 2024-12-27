@@ -44,14 +44,54 @@ public class ExpenseController {
 
     }
     @GetMapping("/{id}")
-    public ResponseEntity<?> getExpenseById(@PathVariable Long id){
+    public ResponseEntity<?> getExpenseById(@PathVariable Long id) {
         try {
+            // Attempt to retrieve the expense by ID using the service layer.
+            // Returns the found expense as the response body.
             return ResponseEntity.ok(expenseService.getExpenseById(id));
-        }catch (EntityNotFoundException ex){
+        } catch (EntityNotFoundException ex) {
+            // Handle the case where the expense with the given ID is not found.
+            // Return an HTTP 404 NOT FOUND response with the exception message as the response body.
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-        }catch (Exception e){
+        } catch (Exception e) {
+            // Handle any unexpected exceptions that may occur during the operation.
+            // Return an HTTP 500 INTERNAL SERVER ERROR response with a generic error message.
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
         }
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateExpense(@PathVariable Long id, @RequestBody ExpenseDto dto) {
+        try {
+            // Attempt to update the expense by ID using the service layer.
+            // Returns the updated expense as the response body.
+            return ResponseEntity.ok(expenseService.updateExpense(id, dto));
+        } catch (EntityNotFoundException ex) {
+            // Handle the case where the expense with the given ID is not found.
+            // Return an HTTP 404 NOT FOUND response with the exception message as the response body.
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        } catch (Exception e) {
+            // Handle any unexpected exceptions that may occur during the operation.
+            // Return an HTTP 500 INTERNAL SERVER ERROR response with a generic error message.
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
+        }
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteExpense(@PathVariable Long id) {
+        try {
+            // Attempt to delete the expense by ID using the service layer.
+            expenseService.deleteExpense(id);
+            // Return an HTTP 200 OK response with no body if deletion is successful.
+            return ResponseEntity.ok(null);
+        } catch (EntityNotFoundException ex) {
+            // Handle the case where the expense with the given ID is not found.
+            // Return an HTTP 404 NOT FOUND response with the exception message as the response body.
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        } catch (Exception e) {
+            // Handle any unexpected exceptions that may occur during the operation.
+            // Return an HTTP 500 INTERNAL SERVER ERROR response with a generic error message.
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
+        }
+    }
+
 
 }
