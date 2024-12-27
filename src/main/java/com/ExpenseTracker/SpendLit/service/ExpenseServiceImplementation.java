@@ -6,6 +6,10 @@ import com.ExpenseTracker.SpendLit.repository.ExpenseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class ExpenseServiceImplementation implements ExpenseService{
@@ -43,5 +47,17 @@ public class ExpenseServiceImplementation implements ExpenseService{
     public Expense postExpense(ExpenseDto expenseDto){
         return updateOrSaveExpense(new Expense(), expenseDto);
     }
+
+    public List<Expense> getAllExpense() {
+        // Fetch all expenses from the database using the repository
+        return expenseRepository.findAll()
+                // Convert the list of expenses into a stream for functional operations
+                .stream()
+                // Sort the stream of expenses in descending order by the date field
+                .sorted(Comparator.comparing(Expense::getDate).reversed())
+                // Collect the sorted stream back into a list and return it
+                .collect(Collectors.toList());
+    }
+
 
 }

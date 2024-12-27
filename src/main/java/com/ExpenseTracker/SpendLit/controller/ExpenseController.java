@@ -36,5 +36,11 @@ public class ExpenseController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+    //To get all expenses
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllExpense(){
+        return ResponseEntity.ok(expenseService.getAllExpense());
+
+    }
 
 }
