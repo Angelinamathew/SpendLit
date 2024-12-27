@@ -58,5 +58,18 @@ public class IncomeController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
         }
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteIncome(@PathVariable Long id) {
+        try {
+            // Attempt to delete the expense by ID using the service layer.
+            incomeService.deleteIncome(id);
+            // Return an HTTP 200 OK response with no body if deletion is successful.
+            return ResponseEntity.ok(null);
+        } catch (EntityNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
+        }
+    }
 
 }

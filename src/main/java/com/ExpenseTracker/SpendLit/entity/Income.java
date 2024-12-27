@@ -33,19 +33,19 @@ public class Income {
      *
      * @return an IncomeDto object populated with data from this Income entity
      */
-    public IncomeDto getIncomeDto() {
-        // Create a new IncomeDto instance
-        IncomeDto incomeDto = new IncomeDto();
-
-        // Map fields from the entity to the DTO
-        incomeDto.setId(id);
-        incomeDto.setTitle(title);
-        incomeDto.setAmount(amount);
-        incomeDto.setDate(date);
-        incomeDto.setCategory(category);
-        incomeDto.setDescription(description);
-
-        return incomeDto; // Return the populated DTO object
-    }
+//    public IncomeDto getIncomeDto() {
+//        // Create a new IncomeDto instance
+//        IncomeDto incomeDto = new IncomeDto();
+//
+//        // Map fields from the entity to the DTO
+//        incomeDto.setId(id);
+//        incomeDto.setTitle(title);
+//        incomeDto.setAmount(amount);
+//        incomeDto.setDate(date);
+//        incomeDto.setCategory(category);
+//        incomeDto.setDescription(description);
+//
+//        return incomeDto; // Return the populated DTO object
+//    }
 
 }

@@ -78,7 +78,7 @@ public class ExpenseServiceImplementation implements ExpenseService{
             throw new EntityNotFoundException("Expense is not found with id "+ id);
         }
     }
-
+    // to delete the expense
     public void deleteExpense(Long id){
         Optional<Expense> optionalExpense = expenseRepository.findById(id);
         if(optionalExpense.isPresent()){

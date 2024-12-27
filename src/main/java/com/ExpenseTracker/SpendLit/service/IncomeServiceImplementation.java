@@ -67,5 +67,14 @@ public class IncomeServiceImplementation implements IncomeService{
             throw new EntityNotFoundException("Income is not found with id "+id);
         }
     }
+    // created an API call to delete an income using id
+    public void deleteIncome(Long id){
+        Optional<Income> optionalIncome = incomeRepository.findById(id);
+        if(optionalIncome.isPresent()){
+            incomeRepository.deleteById(id);
+        }else{
+            throw new EntityNotFoundException("Expense is not found with id "+ id);
+        }
+    }
 
 }
