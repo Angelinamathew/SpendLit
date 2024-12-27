@@ -3,11 +3,13 @@ package com.ExpenseTracker.SpendLit.service;
 import com.ExpenseTracker.SpendLit.dto.ExpenseDto;
 import com.ExpenseTracker.SpendLit.entity.Expense;
 import com.ExpenseTracker.SpendLit.repository.ExpenseRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,7 +49,7 @@ public class ExpenseServiceImplementation implements ExpenseService{
     public Expense postExpense(ExpenseDto expenseDto){
         return updateOrSaveExpense(new Expense(), expenseDto);
     }
-
+    //get all the expenses
     public List<Expense> getAllExpense() {
         // Fetch all expenses from the database using the repository
         return expenseRepository.findAll()
@@ -57,6 +59,15 @@ public class ExpenseServiceImplementation implements ExpenseService{
                 .sorted(Comparator.comparing(Expense::getDate).reversed())
                 // Collect the sorted stream back into a list and return it
                 .collect(Collectors.toList());
+    }
+    // To get expense by ID
+    public Expense getExpenseById(Long id){
+        Optional<Expense> optionalExpense = expenseRepository.findById(id);
+        if(optionalExpense.isPresent()){
+            return optionalExpense.get();
+        }else{
+            throw new EntityNotFoundException("Expense is not found with id "+id);
+        }
     }
 
 
