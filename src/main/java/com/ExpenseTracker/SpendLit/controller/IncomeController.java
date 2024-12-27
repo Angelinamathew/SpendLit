@@ -30,4 +30,10 @@ public class IncomeController {
         }
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllIncome(){
+        return ResponseEntity.ok(incomeService.getAllIncome());
+
+    }
+
 }
