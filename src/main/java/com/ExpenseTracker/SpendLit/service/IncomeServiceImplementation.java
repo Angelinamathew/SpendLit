@@ -6,6 +6,7 @@ import com.ExpenseTracker.SpendLit.entity.Expense;
 import com.ExpenseTracker.SpendLit.entity.Income;
 import com.ExpenseTracker.SpendLit.repository.IncomeRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,16 @@ public class IncomeServiceImplementation implements IncomeService{
             return saveOrUpdateIncome(optionalIncome.get(), dto);
         }else{
             throw new EntityNotFoundException("Income is not found with id "+ id);
+        }
+    }
+
+    // created get Income by ID
+    public Income getIncomeById(Long id){
+        Optional<Income> optionalIncome = incomeRepository.findById(id);
+        if(optionalIncome.isPresent()){
+            return optionalIncome.get();
+        }else{
+            throw new EntityNotFoundException("Income is not found with id "+id);
         }
     }
 
