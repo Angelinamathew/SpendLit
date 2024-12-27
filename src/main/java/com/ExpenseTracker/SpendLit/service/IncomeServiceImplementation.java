@@ -5,11 +5,13 @@ import com.ExpenseTracker.SpendLit.dto.IncomeDto;
 import com.ExpenseTracker.SpendLit.entity.Expense;
 import com.ExpenseTracker.SpendLit.entity.Income;
 import com.ExpenseTracker.SpendLit.repository.IncomeRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,6 +45,16 @@ public class IncomeServiceImplementation implements IncomeService{
                 .sorted(Comparator.comparing(Income::getDate).reversed())
                 // Collect the sorted stream back into a list and return it
                 .collect(Collectors.toList());
+    }
+
+    //created Update Income API call
+    public Income updateIncome(Long id, IncomeDto dto){
+        Optional<Income> optionalIncome = incomeRepository.findById(id);
+        if(optionalIncome.isPresent()){
+            return saveOrUpdateIncome(optionalIncome.get(), dto);
+        }else{
+            throw new EntityNotFoundException("Income is not found with id "+ id);
+        }
     }
 
 }
