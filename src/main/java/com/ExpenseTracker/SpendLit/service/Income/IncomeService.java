@@ -1,4 +1,4 @@
-package com.ExpenseTracker.SpendLit.service;
+package com.ExpenseTracker.SpendLit.service.Income;
 
 import com.ExpenseTracker.SpendLit.dto.IncomeDto;
 import com.ExpenseTracker.SpendLit.entity.Income;

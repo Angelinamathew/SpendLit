@@ -2,12 +2,10 @@ package com.ExpenseTracker.SpendLit.controller;
 
 import com.ExpenseTracker.SpendLit.dto.ExpenseDto;
 import com.ExpenseTracker.SpendLit.entity.Expense;
-import com.ExpenseTracker.SpendLit.service.ExpenseService;
+import com.ExpenseTracker.SpendLit.service.expense.ExpenseService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

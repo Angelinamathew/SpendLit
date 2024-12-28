@@ -1,8 +1,9 @@
-package com.ExpenseTracker.SpendLit.service;
+package com.ExpenseTracker.SpendLit.service.expense;
 
 import com.ExpenseTracker.SpendLit.dto.ExpenseDto;
 import com.ExpenseTracker.SpendLit.entity.Expense;
 import com.ExpenseTracker.SpendLit.repository.ExpenseRepository;
+import com.ExpenseTracker.SpendLit.service.expense.ExpenseService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ExpenseServiceImplementation implements ExpenseService{
+public class ExpenseServiceImplementation implements ExpenseService {
 
     private final ExpenseRepository expenseRepository;
 

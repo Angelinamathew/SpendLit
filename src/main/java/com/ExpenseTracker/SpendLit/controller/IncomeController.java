@@ -1,10 +1,9 @@
 package com.ExpenseTracker.SpendLit.controller;
 
 
-import com.ExpenseTracker.SpendLit.dto.ExpenseDto;
 import com.ExpenseTracker.SpendLit.dto.IncomeDto;
 import com.ExpenseTracker.SpendLit.entity.Income;
-import com.ExpenseTracker.SpendLit.service.IncomeService;
+import com.ExpenseTracker.SpendLit.service.Income.IncomeService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
