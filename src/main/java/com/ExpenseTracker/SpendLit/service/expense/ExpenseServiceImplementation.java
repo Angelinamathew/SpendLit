@@ -3,7 +3,6 @@ package com.ExpenseTracker.SpendLit.service.expense;
 import com.ExpenseTracker.SpendLit.dto.ExpenseDto;
 import com.ExpenseTracker.SpendLit.entity.Expense;
 import com.ExpenseTracker.SpendLit.repository.ExpenseRepository;
-import com.ExpenseTracker.SpendLit.service.expense.ExpenseService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

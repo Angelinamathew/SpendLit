@@ -1,6 +1,5 @@
 package com.ExpenseTracker.SpendLit.entity;
 
-import com.ExpenseTracker.SpendLit.dto.IncomeDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

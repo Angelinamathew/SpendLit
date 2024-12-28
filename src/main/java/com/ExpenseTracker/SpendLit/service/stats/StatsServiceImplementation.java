@@ -6,11 +6,8 @@ import com.ExpenseTracker.SpendLit.entity.Expense;
 import com.ExpenseTracker.SpendLit.entity.Income;
 import com.ExpenseTracker.SpendLit.repository.ExpenseRepository;
 import com.ExpenseTracker.SpendLit.repository.IncomeRepository;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import javax.swing.text.html.Option;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;

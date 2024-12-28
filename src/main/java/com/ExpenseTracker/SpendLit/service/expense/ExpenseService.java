@@ -2,7 +2,6 @@ package com.ExpenseTracker.SpendLit.service.expense;
 
 import com.ExpenseTracker.SpendLit.dto.ExpenseDto;
 import com.ExpenseTracker.SpendLit.entity.Expense;
-
 import java.util.List;
 
 public interface ExpenseService {
