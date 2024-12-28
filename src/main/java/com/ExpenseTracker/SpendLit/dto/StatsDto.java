@@ -15,4 +15,13 @@ public class StatsDto {
 
     private Expense lastestExpense;
 
+    private Double balance;
+
+    private Double minIncome;
+
+    private Double maxIncome;
+
+    private Double minExpense;
+
+    private Double maxExpense;
 }

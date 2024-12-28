@@ -23,10 +23,11 @@ public class StatsController {
         return ResponseEntity.ok(statsService.getGraphCharts());
     }
 
-    //Created Stats API for total & latest Income and Expense
+    //Created Stats API for total and latest Income and Expense
     @GetMapping()
     public ResponseEntity<?> getStats(){
         return ResponseEntity.ok(statsService.getStats());
     }
+
 
 }

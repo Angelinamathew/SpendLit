@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
+import java.util.OptionalDouble;
 
 @Service
 @RequiredArgsConstructor
@@ -50,7 +52,8 @@ public class StatsServiceImplementation implements StatsService{
     }
 
     //Created Stats API for total & latest Income and Expense
-    public StatsDto getStats(){
+    //Created Stats API for balance, min, max Income and Expense
+    public StatsDto getStats() {
         // Retrieve the total sum of all incomes and expenses
         Double totalIncome = incomeRepository.sumAllAmounts();
         Double totalExpense = expenseRepository.sumAllAmounts();
@@ -61,13 +64,40 @@ public class StatsServiceImplementation implements StatsService{
 
         // Create and populate a StatsDto object
         StatsDto statsDto = new StatsDto();
-        statsDto.setExpense(totalExpense);
-        statsDto.setIncome(totalIncome);
+        statsDto.setExpense(totalExpense); // Set total expenses
+        statsDto.setIncome(totalIncome);   // Set total incomes
+
+        // Calculate and set the balance
+        statsDto.setBalance(totalIncome - totalExpense);
 
         // Set the most recent income and expense records if present
         optionalIncome.ifPresent(statsDto::setLastestIncome);
         optionalExpense.ifPresent(statsDto::setLastestExpense);
 
+        // Retrieve all income and expense records
+        List<Income> incomeList = incomeRepository.findAll();
+        List<Expense> expenseList = expenseRepository.findAll();
+
+        // Calculate minimum and maximum income amounts
+        OptionalDouble minIncome = incomeList.stream().mapToDouble(Income::getAmount).min();
+        OptionalDouble maxIncome = incomeList.stream().mapToDouble(Income::getAmount).max();
+
+        // Calculate minimum and maximum expense amounts
+        OptionalDouble minExpense = expenseList.stream().mapToDouble(Expense::getAmount).min();
+        OptionalDouble maxExpense = expenseList.stream().mapToDouble(Expense::getAmount).max();
+
+        // Set maximum and minimum expense amounts, handling cases where no records are present
+        statsDto.setMaxExpense(maxExpense.isPresent() ? maxExpense.getAsDouble() : null);
+        statsDto.setMinExpense(minExpense.isPresent() ? minExpense.getAsDouble() : null);
+
+        // Set maximum and minimum income amounts, handling cases where no records are present
+        statsDto.setMaxIncome(maxIncome.isPresent() ? maxIncome.getAsDouble() : null);
+        statsDto.setMinIncome(minIncome.isPresent() ? minIncome.getAsDouble() : null);
+
+        // Return the populated StatsDto object with all calculated statistics
         return statsDto;
     }
+
+
+
 }
