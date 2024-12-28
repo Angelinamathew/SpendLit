@@ -1,12 +1,18 @@
 package com.ExpenseTracker.SpendLit.service.stats;
 
 import com.ExpenseTracker.SpendLit.dto.GraphDto;
+import com.ExpenseTracker.SpendLit.dto.StatsDto;
+import com.ExpenseTracker.SpendLit.entity.Expense;
+import com.ExpenseTracker.SpendLit.entity.Income;
 import com.ExpenseTracker.SpendLit.repository.ExpenseRepository;
 import com.ExpenseTracker.SpendLit.repository.IncomeRepository;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +28,7 @@ public class StatsServiceImplementation implements StatsService{
      *
      * @return GraphDto containing lists of expenses and incomes
      */
+    //created API to get income and expense data for graph
     public GraphDto getGraphCharts() {
         // Get the current date as the end date
         LocalDate endDate = LocalDate.now();
@@ -40,5 +47,27 @@ public class StatsServiceImplementation implements StatsService{
 
         // Return the populated GraphDto object
         return graphDto;
+    }
+
+    //Created Stats API for total & latest Income and Expense
+    public StatsDto getStats(){
+        // Retrieve the total sum of all incomes and expenses
+        Double totalIncome = incomeRepository.sumAllAmounts();
+        Double totalExpense = expenseRepository.sumAllAmounts();
+
+        // Get the most recent income and expense records
+        Optional<Income> optionalIncome = incomeRepository.findFirstByOrderByDateDesc();
+        Optional<Expense> optionalExpense = expenseRepository.findFirstByOrderByDateDesc();
+
+        // Create and populate a StatsDto object
+        StatsDto statsDto = new StatsDto();
+        statsDto.setExpense(totalExpense);
+        statsDto.setIncome(totalIncome);
+
+        // Set the most recent income and expense records if present
+        optionalIncome.ifPresent(statsDto::setLastestIncome);
+        optionalExpense.ifPresent(statsDto::setLastestExpense);
+
+        return statsDto;
     }
 }

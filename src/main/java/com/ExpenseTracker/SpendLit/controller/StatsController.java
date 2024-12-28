@@ -17,8 +17,16 @@ public class StatsController {
 
     private final StatsService statsService;
 
+    //created API to get income and expense data for graph
     @GetMapping("/chart")
     public ResponseEntity<GraphDto> getChartData(){
         return ResponseEntity.ok(statsService.getGraphCharts());
     }
+
+    //Created Stats API for total & latest Income and Expense
+    @GetMapping()
+    public ResponseEntity<?> getStats(){
+        return ResponseEntity.ok(statsService.getStats());
+    }
+
 }
