@@ -10,5 +10,5 @@ public interface IncomeRepository extends JpaRepository<Income, Long > {
 
    // Retrieves a list of Income entities whose incomeDate falls between the specified start and end dates.
 
-    List<Income> findByBetweenDate(LocalDate startDate, LocalDate endDate);
+    List<Income> findByDateBetween(LocalDate startDate, LocalDate endDate);
 }
