@@ -35,8 +35,10 @@ build/
 # Ignore environment variable files
 .env
 
+
 # Ignore Spring configuration files
 application.properties
 application.yml
+
 
 
