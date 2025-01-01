@@ -23,6 +23,8 @@ public class JWTServiceImplementation {
                 .compact();  // Compact the JWT into a string format
     }
 
+
+
     // Method to generate a signing key from a base64-encoded secret
     private Key getSignKey() {
         byte[] key = Decoders.BASE64.decode("");  // Decode the base64-encoded secret (currently empty placeholder)
