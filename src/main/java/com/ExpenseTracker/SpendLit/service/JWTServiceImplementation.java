@@ -4,14 +4,20 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.util.Base64;
 import java.util.Date;
 
 @Service
 public class JWTServiceImplementation {
+
+    //jwt.secret is injected from application.properties
+    @Value("${jwt.secret}")
+    private String base64Secret;
 
     // Method to generate JWT token for a given UserDetails
     private String generateToken(UserDetails userDetails) {
@@ -27,7 +33,8 @@ public class JWTServiceImplementation {
 
     // Method to generate a signing key from a base64-encoded secret
     private Key getSignKey() {
-        byte[] key = Decoders.BASE64.decode("");  // Decode the base64-encoded secret (currently empty placeholder)
+        // Decode the base64-encoded secret
+        byte[] key = Base64.getDecoder().decode(base64Secret);
         return Keys.hmacShaKeyFor(key);  // Generate HMAC key for signing
     }
 }
