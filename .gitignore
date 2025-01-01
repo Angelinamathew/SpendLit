@@ -35,10 +35,10 @@ build/
 # Ignore environment variable files
 .env
 
+# Ignore Spring configuration files
+src/main/resources/application.properties
 
-# Ignore Spring configuration files
-# Ignore Spring configuration files
-/src/main/resources/application.properties
+
 
 
 
