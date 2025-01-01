@@ -37,8 +37,10 @@ build/
 
 
 # Ignore Spring configuration files
-application.properties
-application.yml
+# Ignore Spring configuration files
+/src/main/resources/application.properties
+
+
 
 
 
