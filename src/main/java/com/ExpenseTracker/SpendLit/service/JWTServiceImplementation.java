@@ -3,7 +3,6 @@ package com.ExpenseTracker.SpendLit.service;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -50,7 +49,7 @@ public class JWTServiceImplementation {
 
     }
     // This will return the email for the particular token
-    public String getUserName(String token){
+    public String extractUserName(String token){
         return extractClaims(token, Claims::getSubject);
 
     }
