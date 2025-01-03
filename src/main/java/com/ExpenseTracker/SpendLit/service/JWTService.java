@@ -6,4 +6,6 @@ public interface JWTService {
     String generateToken(UserDetails userDetails);
 
     String extractUserName(String token);
+
+    boolean isTokenValid(String token, UserDetails userDetails);
 }

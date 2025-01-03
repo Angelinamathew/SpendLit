@@ -60,4 +60,17 @@ public class JWTServiceImplementation {
         byte[] key = Base64.getDecoder().decode(base64Secret);
         return Keys.hmacShaKeyFor(key);  // Generate HMAC key for signing
     }
+
+    public boolean isTokenValid(String token, UserDetails userDetails){
+        // Extract the username from the token
+        final String userName = extractUserName(token);
+        // Check if the username in the token matches the username from userDetails
+        // and if the token is not expired
+        return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    private boolean isTokenExpired(String token) {
+        // Extract the expiration date from the token and check if it is before the current date
+        return extractClaims(token, Claims::getExpiration).before(new Date());
+    }
 }
