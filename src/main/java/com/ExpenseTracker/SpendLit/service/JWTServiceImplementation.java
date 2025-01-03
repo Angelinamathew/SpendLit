@@ -14,14 +14,14 @@ import java.util.Date;
 import java.util.function.Function;
 
 @Service
-public class JWTServiceImplementation {
+public class JWTServiceImplementation implements JWTService {
 
     //jwt.secret is injected from application.properties
     @Value("${jwt.secret}")
     private String base64Secret;
 
     // Method to generate JWT token for a given UserDetails
-    private String generateToken(UserDetails userDetails) {
+    public String generateToken(UserDetails userDetails) {
         return Jwts.builder()  // Start building the JWT
                 .setSubject(userDetails.getUsername())  // Set the subject (username) of the token
                 .setIssuedAt(new Date(System.currentTimeMillis()))  // Set the issuance date (current time)

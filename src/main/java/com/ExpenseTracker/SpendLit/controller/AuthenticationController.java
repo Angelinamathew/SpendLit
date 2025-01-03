@@ -19,6 +19,7 @@ public class AuthenticationController {
 
     @PostMapping("/signup")
     public ResponseEntity<User> signUp(@RequestBody SignUpRequest signUpRequest){
+       // Calls the signup method in the service and returns the created User in the response
         return ResponseEntity.ok(authenticationService.signUp(signUpRequest));
 
     }
