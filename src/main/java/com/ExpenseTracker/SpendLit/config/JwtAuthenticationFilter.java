@@ -1,7 +1,7 @@
 package com.ExpenseTracker.SpendLit.config;
 
-import com.ExpenseTracker.SpendLit.service.JWTService;
-import com.ExpenseTracker.SpendLit.service.UserService;
+import com.ExpenseTracker.SpendLit.service.jwt.JWTService;
+import com.ExpenseTracker.SpendLit.service.user.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

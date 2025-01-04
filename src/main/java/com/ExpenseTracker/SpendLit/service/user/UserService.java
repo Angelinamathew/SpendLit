@@ -1,4 +1,4 @@
-package com.ExpenseTracker.SpendLit.service;
+package com.ExpenseTracker.SpendLit.service.user;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 

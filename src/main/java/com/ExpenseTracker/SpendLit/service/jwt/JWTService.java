@@ -1,4 +1,4 @@
-package com.ExpenseTracker.SpendLit.service;
+package com.ExpenseTracker.SpendLit.service.jwt;
 
 import com.ExpenseTracker.SpendLit.entity.User;
 import org.springframework.security.core.userdetails.UserDetails;

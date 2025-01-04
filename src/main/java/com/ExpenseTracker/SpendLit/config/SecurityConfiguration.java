@@ -1,7 +1,7 @@
 package com.ExpenseTracker.SpendLit.config;
 
 import com.ExpenseTracker.SpendLit.entity.Role;
-import com.ExpenseTracker.SpendLit.service.UserService;
+import com.ExpenseTracker.SpendLit.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

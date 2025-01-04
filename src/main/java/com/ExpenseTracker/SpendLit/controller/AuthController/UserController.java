@@ -1,4 +1,4 @@
-package com.ExpenseTracker.SpendLit.controller;
+package com.ExpenseTracker.SpendLit.controller.AuthController;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

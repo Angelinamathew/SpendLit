@@ -1,6 +1,7 @@
-package com.ExpenseTracker.SpendLit.service;
+package com.ExpenseTracker.SpendLit.service.user;
 
 import com.ExpenseTracker.SpendLit.repository.UserRepository;
+import com.ExpenseTracker.SpendLit.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImplementation implements UserService{
+public class UserServiceImplementation implements UserService {
 
     // Injects the UserRepository for database operations related to users
     private final UserRepository userRepository;

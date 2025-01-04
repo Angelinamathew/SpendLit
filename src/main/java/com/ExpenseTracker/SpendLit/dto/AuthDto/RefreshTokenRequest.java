@@ -1,4 +1,4 @@
-package com.ExpenseTracker.SpendLit.dto;
+package com.ExpenseTracker.SpendLit.dto.AuthDto;
 
 import lombok.Data;
 

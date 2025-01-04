@@ -1,11 +1,11 @@
-package com.ExpenseTracker.SpendLit.controller;
+package com.ExpenseTracker.SpendLit.controller.AuthController;
 
-import com.ExpenseTracker.SpendLit.dto.JwtAuthenticationResponse;
-import com.ExpenseTracker.SpendLit.dto.RefreshTokenRequest;
-import com.ExpenseTracker.SpendLit.dto.SignInRequest;
-import com.ExpenseTracker.SpendLit.dto.SignUpRequest;
+import com.ExpenseTracker.SpendLit.dto.AuthDto.JwtAuthenticationResponse;
+import com.ExpenseTracker.SpendLit.dto.AuthDto.RefreshTokenRequest;
+import com.ExpenseTracker.SpendLit.dto.AuthDto.SignInRequest;
+import com.ExpenseTracker.SpendLit.dto.AuthDto.SignUpRequest;
 import com.ExpenseTracker.SpendLit.entity.User;
-import com.ExpenseTracker.SpendLit.service.AuthenticationService;
+import com.ExpenseTracker.SpendLit.service.authentication.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

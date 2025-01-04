@@ -1,5 +1,6 @@
-package com.ExpenseTracker.SpendLit.service;
+package com.ExpenseTracker.SpendLit.service.jwt;
 
+import com.ExpenseTracker.SpendLit.service.jwt.JWTService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,7 +14,6 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.logging.Logger;
 
 @Service
 public class JWTServiceImplementation implements JWTService {

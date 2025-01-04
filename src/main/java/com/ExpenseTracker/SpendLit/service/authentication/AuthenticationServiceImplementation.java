@@ -1,12 +1,13 @@
-package com.ExpenseTracker.SpendLit.service;
+package com.ExpenseTracker.SpendLit.service.authentication;
 
-import com.ExpenseTracker.SpendLit.dto.JwtAuthenticationResponse;
-import com.ExpenseTracker.SpendLit.dto.RefreshTokenRequest;
-import com.ExpenseTracker.SpendLit.dto.SignInRequest;
-import com.ExpenseTracker.SpendLit.dto.SignUpRequest;
+import com.ExpenseTracker.SpendLit.dto.AuthDto.JwtAuthenticationResponse;
+import com.ExpenseTracker.SpendLit.dto.AuthDto.RefreshTokenRequest;
+import com.ExpenseTracker.SpendLit.dto.AuthDto.SignInRequest;
+import com.ExpenseTracker.SpendLit.dto.AuthDto.SignUpRequest;
 import com.ExpenseTracker.SpendLit.entity.Role;
 import com.ExpenseTracker.SpendLit.entity.User;
 import com.ExpenseTracker.SpendLit.repository.UserRepository;
+import com.ExpenseTracker.SpendLit.service.jwt.JWTService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
