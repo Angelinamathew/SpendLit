@@ -1,6 +1,7 @@
 package com.ExpenseTracker.SpendLit.controller;
 
 import com.ExpenseTracker.SpendLit.dto.JwtAuthenticationResponse;
+import com.ExpenseTracker.SpendLit.dto.RefreshTokenRequest;
 import com.ExpenseTracker.SpendLit.dto.SignInRequest;
 import com.ExpenseTracker.SpendLit.dto.SignUpRequest;
 import com.ExpenseTracker.SpendLit.entity.User;
@@ -28,5 +29,11 @@ public class AuthenticationController {
     public ResponseEntity<JwtAuthenticationResponse> signIn(@RequestBody SignInRequest signInRequest){
         // Calls the signIn method from the AuthenticationService and returns the response
         return ResponseEntity.ok(authenticationService.signIn(signInRequest));
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<JwtAuthenticationResponse> refresh(@RequestBody RefreshTokenRequest refreshTokenRequest){
+        // Calls the signIn method from the AuthenticationService and returns the response
+        return ResponseEntity.ok(authenticationService.refreshToken(refreshTokenRequest));
     }
 }
