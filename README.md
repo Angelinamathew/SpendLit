@@ -1,4 +1,4 @@
-SpendLit 
+<h> SpendLit </h> 
 * An expense tracker application designed to help users manage their finances effectively.
 * Built with Java, Spring Boot, React, and MySQL, it enables users to track expenses, set budgets, and visualize spending patterns. 
 * The app focuses on user-friendly interfaces and robust back-end support to ensure seamless performance and data management.
